@@ -1,0 +1,189 @@
+.profile {
+  // padding: 0 60px;
+
+  .settingIcon {
+    position: absolute;
+    color: #b5b7b8;
+    top: 6.5rem;
+    right: 60px;
+    animation-name: example;
+    animation: example 3s linear infinite;
+  }
+  @keyframes example {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .container {
+    width: 100%;
+    min-height: 90vh;
+    border-bottom: 1px solid rgb(97, 26, 26);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s linear;
+  }
+  .content {
+    width: 350px;
+    height: 400px;
+    margin-top: 2rem;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .image {
+    text-align: center;
+  }
+  .profilePhoto {
+    transform: translateY(-90px);
+  }
+  img {
+    width: 150px;
+    height: 150px;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.04);
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: white;
+    cursor: pointer;
+  }
+  h1 {
+    font-size: 40px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    text-align: center;
+  }
+  h4 {
+    font-size: 20px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  }
+  .followers {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    transform: translateY(-60px);
+  }
+  .followers h2 {
+    font-size: 25px;
+    transition: 0.2s linear;
+  }
+  .followers h2:hover {
+    transform: scale(1.1);
+    letter-spacing: 1px;
+  }
+  .followers p {
+    font-size: 12px;
+  }
+  .btn {
+    width: 150px;
+    height: 35px;
+    transition: 0.2s linear;
+    outline: none;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 5px;
+  }
+  .blue {
+    border: 2px solid transparent;
+    background-color: rgb(161, 211, 255);
+  }
+  .white {
+    border: 2px solid transparent;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  .blue:hover {
+    background-color: rgba(161, 211, 255, 0.616);
+  }
+  .white:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  .media {
+    width: 100%;
+    text-align: center;
+    align-items: center;
+  }
+  a {
+    text-decoration: none;
+    width: 30px;
+    height: 30px;
+  }
+
+  .options {
+    transform: translateY(-35px);
+  }
+  .media {
+    transform: translateY(-15px);
+  }
+  .line {
+    width: 80px;
+    height: 38px;
+    background-color: #3b5998;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #rightCircle,
+  #leftCircle {
+    width: 40px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: white;
+    padding: 5px;
+    transition: 0.2s linear;
+    cursor: pointer;
+  }
+  #rightCircle {
+    opacity: 0;
+  }
+  .options {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .imgWrapper {
+    padding: 0 0.7rem;
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(265px, 9px));
+    gap: 1rem;
+    div {
+      display: block;
+      margin: 0 auto;
+
+      img {
+        border-radius: 100% 0% 100% 0% / 30% 60% 40% 70%;
+        border-color: rgb(242, 142, 21);
+        // https://9elements.github.io/fancy-border-radius/#82.21.15.68--313.312
+        width: 260px;
+        height: 200px !important;
+        margin-bottom: 0.5rem;
+        transition: 0.2s ease-in-out;
+        &:hover {
+          transform: scale(1.016);
+        }
+      }
+    }
+  }
+  .followBtn {
+    display: block;
+    height: 45px;
+    min-width: 160px;
+    margin: 0 auto;
+    background-color: rgb(77, 251, 57);
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+}
