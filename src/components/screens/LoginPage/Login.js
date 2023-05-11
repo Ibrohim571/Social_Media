@@ -28,17 +28,27 @@ export default function Login(props) {
       return;
     }
 
-    fetch("/signin", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        password: logPassword,
-        email: logEmail,
-      }),
-    })
-      .then((res) => res.json())
+    // fetch("/signin", {
+    //   method: "post",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     password: logPassword,
+    //     email: logEmail,
+    //   }),
+    // })
+    axios
+      .post(
+        "/signin",
+        { password: logPassword, email: logEmail },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      // .then((res) => res.json())
       .then((data) => {
         if (data.error) {
           M.toast({ html: data.error, classes: "#ff1744 red accent-3" });
