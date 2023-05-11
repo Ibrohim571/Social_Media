@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../App";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 import Loader from "./Loader";
 
 export default function UserProfile() {
@@ -12,31 +13,47 @@ export default function UserProfile() {
   );
 
   useEffect(() => {
-    fetch(`/user/${userId}`, {
-      headers: {
-        Authorization: "Sammi " + localStorage.getItem("jwt"),
-      },
-    })
-      .then((res) => res.json())
+    // fetch(`/user/${userId}`, {
+    //   headers: {
+    //     Authorization: "Sammi " + localStorage.getItem("jwt"),
+    //   },
+    // })
+    axios
+      .get(`/user/${userId}`, {
+        headers: {
+          Authorization: "Sammi " + localStorage.getItem("jwt"),
+        },
+      })
+      // .then((res) => res.json())
       .then((result) => {
-        setProfile(result);
+        setProfile(result.data);
       });
   });
 
   const followUser = () => {
-    fetch("/follow", {
-      method: "put",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Sammi " + localStorage.getItem("jwt"),
-      },
-      body: JSON.stringify({
-        followId: userId,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+    // fetch("/follow", {
+    //   method: "put",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: "Sammi " + localStorage.getItem("jwt"),
+    //   },
+    //   body: JSON.stringify({
+    //     followId: userId,
+    //   }),
+    // })
+    axios
+      .put(
+        "/follow",
+        { followId: userId },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Sammi " + localStorage.getItem("jwt"),
+          },
+        }
+      )
+      // .then((res) => res.json())
+      .then(({ data }) => {
         dispatch({
           type: "UPDATE",
           payload: { following: data.following, followers: data.followers },
@@ -56,18 +73,31 @@ export default function UserProfile() {
   };
 
   const unfollowUser = () => {
-    fetch("/unfollow", {
-      method: "put",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Sammi " + localStorage.getItem("jwt"),
-      },
-      body: JSON.stringify({
-        unfollowId: userId,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
+    // fetch("/unfollow", {
+    //   method: "put",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: "Sammi " + localStorage.getItem("jwt"),
+    //   },
+    //   body: JSON.stringify({
+    //     unfollowId: userId,
+    //   }),
+    // })
+    axios
+      .put(
+        "/unfollow",
+        {
+          unfollowId: userId,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Sammi " + localStorage.getItem("jwt"),
+          },
+        }
+      )
+      // .then((res) => res.json())
+      .then(({ data }) => {
         dispatch({
           type: "UPDATE",
           payload: { following: data.following, followers: data.followers },

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import M from "materialize-css";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 export default function CreatePost() {
   const history = useHistory();
@@ -11,20 +12,35 @@ export default function CreatePost() {
 
   useEffect(() => {
     if (url) {
-      fetch("/createpost", {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Sammi " + localStorage.getItem("jwt"),
-        },
-        body: JSON.stringify({
-          title: title,
-          body: body,
-          pic: url,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
+      // fetch("/createpost", {
+      //   method: "post",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Authorization: "Sammi " + localStorage.getItem("jwt"),
+      //   },
+      //   body: JSON.stringify({
+      //     title: title,
+      //     body: body,
+      //     pic: url,
+      //   }),
+      // })
+      axios
+        .post(
+          "/createpost",
+          {
+            title: title,
+            body: body,
+            pic: url,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Sammi " + localStorage.getItem("jwt"),
+            },
+          }
+        )
+        // .then((res) => res.json())
+        .then(({ data }) => {
           if (data.error) {
             M.toast({ html: data.error, classes: "#ff1744 red accent-3" });
           } else {

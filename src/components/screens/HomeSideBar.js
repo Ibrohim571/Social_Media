@@ -1,20 +1,27 @@
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../App";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function HomeSideBar() {
   const [profile, setProfile] = useState([]);
   const { state, dispatch } = useContext(UserContext);
   useEffect(() => {
-    fetch("/allusers", {
-      headers: {
-        Authorization: "Sammi " + localStorage.getItem("jwt"),
-      },
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-        setProfile(result);
+    // fetch("/allusers", {
+    //   headers: {
+    //     Authorization: "Sammi " + localStorage.getItem("jwt"),
+    //   },
+    // })
+    axios
+      .get("/allusers", {
+        headers: {
+          Authorization: "Sammi " + localStorage.getItem("jwt"),
+        },
+      })
+      // .then((res) => res.json())
+      .then(({ data }) => {
+        console.log(data);
+        setProfile(data);
       });
   }, []);
   return (

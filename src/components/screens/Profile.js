@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../App";
 import Not from "./Not";
+import axios from "axios";
 import M from "materialize-css";
 import "./css/MyProfile.css";
 
@@ -14,14 +15,20 @@ export default function Profile() {
   const [myName, setMyName] = useState("");
 
   useEffect(() => {
-    fetch("/mypost", {
-      headers: {
-        Authorization: "Sammi " + localStorage.getItem("jwt"),
-      },
-    })
-      .then((res) => res.json())
+    // fetch("/mypost", {
+    //   headers: {
+    //     Authorization: "Sammi " + localStorage.getItem("jwt"),
+    //   },
+    // })
+    axios
+      .get("/mypost", {
+        headers: {
+          Authorization: "Sammi " + localStorage.getItem("jwt"),
+        },
+      })
+      // .then((res) => res.json())
       .then((result) => {
-        setProfile(result.myPost);
+        setProfile(result.data.myPost);
       });
   }, []);
 
@@ -37,23 +44,36 @@ export default function Profile() {
       })
         .then((res) => res.json())
         .then((data) => {
-          fetch("/updatepic", {
-            method: "put",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: "Sammi " + localStorage.getItem("jwt"),
-            },
-            body: JSON.stringify({
-              pic: data.url,
-            }),
-          })
-            .then((res) => res.json())
+          // fetch("/updatepic", {
+          //   method: "put",
+          //   headers: {
+          //     "Content-Type": "application/json",
+          //     Authorization: "Sammi " + localStorage.getItem("jwt"),
+          //   },
+          //   body: JSON.stringify({
+          //     pic: data.url,
+          //   }),
+          // })
+          axios
+            .put(
+              "/updatepic",
+              {
+                pic: data.url,
+              },
+              {
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: "Sammi " + localStorage.getItem("jwt"),
+                },
+              }
+            )
+            // .then((res) => res.json())
             .then((result) => {
               localStorage.setItem(
                 "user",
-                JSON.stringify({ ...state, pic: result.pic })
+                JSON.stringify({ ...state, pic: result.data.pic })
               );
-              dispatch({ type: "UPDATEPIC", payload: result.pic });
+              dispatch({ type: "UPDATEPIC", payload: result.data.pic });
             });
         })
         .catch((err) => {
@@ -68,18 +88,29 @@ export default function Profile() {
 
   const editProfile = () => {
     if (myName) {
-      fetch("/editname", {
-        method: "put",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Sammi " + localStorage.getItem("jwt"),
-        },
-        body: JSON.stringify({
-          myName,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
+      // fetch("/editname", {
+      //   method: "put",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Authorization: "Sammi " + localStorage.getItem("jwt"),
+      //   },
+      //   body: JSON.stringify({
+      //     myName,
+      //   }),
+      // })
+      axios
+        .put(
+          "/editname",
+          { myName },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Sammi " + localStorage.getItem("jwt"),
+            },
+          }
+        )
+        // .then((res) => res.json())
+        .then(({ data }) => {
           localStorage.setItem(
             "user",
             JSON.stringify({ ...state, name: data.name })

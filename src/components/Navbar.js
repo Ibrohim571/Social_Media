@@ -2,6 +2,7 @@ import { useContext, useRef, useEffect, useState } from "react";
 import { UserContext } from "../App.js";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 import M from "materialize-css";
 import "./Navbar.css";
 
@@ -70,15 +71,27 @@ export default function Navbar() {
 
   const searchUser = (query) => {
     setSearch(query);
-    fetch("/searchuser", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ query }),
-    })
-      .then((res) => res.json())
-      .then((result) => setUserFinded(result.user))
+    // fetch("/searchuser", {
+    //   method: "post",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({ query }),
+    // })
+    axios
+      .post(
+        "/searchuser",
+        { query },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      // .then((res) => res.json())
+      .then(({ data }) => {
+        setUserFinded(data.user);
+      })
       .catch((e) => console.log(e));
   };
 

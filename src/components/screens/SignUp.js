@@ -1,20 +1,35 @@
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function SignUp() {
   const postData = () => {
-    fetch("/signup", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: "",
-        email: "",
-        password: "",
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
+    // fetch("/signup", {
+    //   method: "post",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     name: "",
+    //     email: "",
+    //     password: "",
+    //   }),
+    // })
+    axios
+      .post(
+        "/signup",
+        {
+          name: "",
+          email: "",
+          password: "",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      // .then((res) => res.json())
+      .then(({ data }) => {
         console.log(data);
       });
   };

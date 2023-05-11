@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "../../../App";
+import axios from "axios";
 import M from "materialize-css";
 
 export default function Login(props) {
@@ -38,18 +39,18 @@ export default function Login(props) {
     //     email: logEmail,
     //   }),
     // })
+    let data = {
+      password: logPassword,
+      email: logEmail,
+    };
     axios
-      .post(
-        "/signin",
-        { password: logPassword, email: logEmail },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
+      .post("/signin", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
       // .then((res) => res.json())
-      .then((data) => {
+      .then(({ data }) => {
         if (data.error) {
           M.toast({ html: data.error, classes: "#ff1744 red accent-3" });
         } else {

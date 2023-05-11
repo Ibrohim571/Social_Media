@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 import "./css/SignIn.css";
 import M from "materialize-css";
 import Login from "./LoginPage/Login";
@@ -47,20 +48,35 @@ export default function SignIn() {
       });
       return;
     }
-    fetch("/signup", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: regName,
-        password: regPassword,
-        email: regEmail,
-        pic: url,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
+    // fetch("/signup", {
+    //   method: "post",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     name: regName,
+    //     password: regPassword,
+    //     email: regEmail,
+    //     pic: url,
+    //   }),
+    // })
+    axios
+      .post(
+        "/signup",
+        {
+          name: regName,
+          password: regPassword,
+          email: regEmail,
+          pic: url,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      // .then((res) => res.json())
+      .then(({ data }) => {
         if (data.error) {
           M.toast({ html: data.error, classes: "#ff1744 red accent-3" });
         } else {

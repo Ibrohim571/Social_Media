@@ -3,6 +3,7 @@ import "./css/Home.css";
 import HomeSideBar from "./HomeSideBar";
 import { UserContext } from "../../App";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -10,34 +11,51 @@ export default function Home() {
   const [showComments, setShowComments] = useState(false);
 
   useEffect(() => {
-    fetch("/allpost", {
-      headers: {
-        Authorization: "Sammi " + localStorage.getItem("jwt"),
-      },
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-        setData(result.posts);
+    // fetch("/allpost", {
+    //   headers: {
+    //     Authorization: "Sammi " + localStorage.getItem("jwt"),
+    //   },
+    // })
+    axios
+      .get("/allpost", {
+        headers: {
+          Authorization: "Sammi " + localStorage.getItem("jwt"),
+        },
+      })
+      // .then((res) => res.json())
+      .then(({ data }) => {
+        console.log(data);
+        setData(data.posts);
       });
   }, []);
 
   const likePost = (id) => {
-    fetch("/like", {
-      method: "put",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Sammi " + localStorage.getItem("jwt"),
-      },
-      body: JSON.stringify({
-        postId: id,
-      }),
-    })
-      .then((res) => res.json())
+    // fetch("/like", {
+    //   method: "put",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: "Sammi " + localStorage.getItem("jwt"),
+    //   },
+    //   body: JSON.stringify({
+    //     postId: id,
+    //   }),
+    // })
+    axios
+      .put(
+        "/like",
+        { postId: id },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Sammi " + localStorage.getItem("jwt"),
+          },
+        }
+      )
+      // .then((res) => res.json())
       .then((result) => {
-        const newData = data.map((item) => {
-          if (item._id === result._id) {
-            return result;
+        const newData = data?.map((item) => {
+          if (item._id === result.data._id) {
+            return result.data;
           } else {
             return item;
           }
@@ -48,22 +66,32 @@ export default function Home() {
   };
 
   const unlikePost = (id) => {
-    fetch("/unlike", {
-      method: "put",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Sammi " + localStorage.getItem("jwt"),
-      },
-      body: JSON.stringify({
-        postId: id,
-      }),
-    })
-      .then((res) => res.json())
+    // fetch("/unlike", {
+    //   method: "put",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: "Sammi " + localStorage.getItem("jwt"),
+    //   },
+    //   body: JSON.stringify({
+    //     postId: id,
+    //   }),
+    // })
+    axios
+      .put(
+        "/unlike",
+        { postId: id },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Sammi " + localStorage.getItem("jwt"),
+          },
+        }
+      )
+      // .then((res) => res.json())
       .then((result) => {
-        // console.log(result);
-        const newData = data.map((item) => {
-          if (item._id === result._id) {
-            return result;
+        const newData = data?.map((item) => {
+          if (item._id === result.data._id) {
+            return result.data;
           } else {
             return item;
           }
@@ -74,23 +102,36 @@ export default function Home() {
   };
 
   const commentPost = (text, postId) => {
-    fetch("/comments", {
-      method: "put",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Sammi " + localStorage.getItem("jwt"),
-      },
-      body: JSON.stringify({
-        postId,
-        text,
-      }),
-    })
-      .then((res) => res.json())
+    // fetch("/comments", {
+    //   method: "put",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: "Sammi " + localStorage.getItem("jwt"),
+    //   },
+    //   body: JSON.stringify({
+    //     postId,
+    //     text,
+    //   }),
+    // })
+    axios
+      .put(
+        "/comments",
+        {
+          postId,
+          text,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Sammi " + localStorage.getItem("jwt"),
+          },
+        }
+      )
+      // .then((res) => res.json())
       .then((result) => {
-        console.log(result);
         const newData = data.map((item) => {
-          if (item._id === result._id) {
-            return result;
+          if (item._id === result.data._id) {
+            return result.data;
           } else {
             return item;
           }
@@ -101,15 +142,21 @@ export default function Home() {
   };
 
   const deletePost = (postId) => {
-    fetch(`/deletepost/${postId}`, {
-      method: "delete",
-      headers: {
-        Authorization: "Sammi " + localStorage.getItem("jwt"),
-      },
-    })
-      .then((res) => res.json())
+    // fetch(`/deletepost/${postId}`, {
+    //   method: "delete",
+    //   headers: {
+    //     Authorization: "Sammi " + localStorage.getItem("jwt"),
+    //   },
+    // })
+    axios
+      .delete(`/deletepost/${postId}`, {
+        headers: {
+          Authorization: "Sammi " + localStorage.getItem("jwt"),
+        },
+      })
+      // .then((res) => res.json())
       .then((result) => {
-        const newData = data.filter((s) => s._id !== result._id);
+        const newData = data.filter((s) => s._id !== result.data._id);
         setData(newData);
       })
       .catch((err) => console.log(err));
