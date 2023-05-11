@@ -71,13 +71,6 @@ export default function Navbar() {
 
   const searchUser = (query) => {
     setSearch(query);
-    // fetch("/searchuser", {
-    //   method: "post",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({ query }),
-    // })
     axios
       .post(
         "/searchuser",

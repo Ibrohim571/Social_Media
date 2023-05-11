@@ -15,18 +15,12 @@ export default function Profile() {
   const [myName, setMyName] = useState("");
 
   useEffect(() => {
-    // fetch("/mypost", {
-    //   headers: {
-    //     Authorization: "Sammi " + localStorage.getItem("jwt"),
-    //   },
-    // })
     axios
       .get("/mypost", {
         headers: {
           Authorization: "Sammi " + localStorage.getItem("jwt"),
         },
       })
-      // .then((res) => res.json())
       .then((result) => {
         setProfile(result.data.myPost);
       });
@@ -44,16 +38,6 @@ export default function Profile() {
       })
         .then((res) => res.json())
         .then((data) => {
-          // fetch("/updatepic", {
-          //   method: "put",
-          //   headers: {
-          //     "Content-Type": "application/json",
-          //     Authorization: "Sammi " + localStorage.getItem("jwt"),
-          //   },
-          //   body: JSON.stringify({
-          //     pic: data.url,
-          //   }),
-          // })
           axios
             .put(
               "/updatepic",
@@ -67,7 +51,6 @@ export default function Profile() {
                 },
               }
             )
-            // .then((res) => res.json())
             .then((result) => {
               localStorage.setItem(
                 "user",
@@ -88,16 +71,6 @@ export default function Profile() {
 
   const editProfile = () => {
     if (myName) {
-      // fetch("/editname", {
-      //   method: "put",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //     Authorization: "Sammi " + localStorage.getItem("jwt"),
-      //   },
-      //   body: JSON.stringify({
-      //     myName,
-      //   }),
-      // })
       axios
         .put(
           "/editname",
@@ -109,7 +82,6 @@ export default function Profile() {
             },
           }
         )
-        // .then((res) => res.json())
         .then(({ data }) => {
           localStorage.setItem(
             "user",

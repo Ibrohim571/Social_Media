@@ -48,18 +48,6 @@ export default function SignIn() {
       });
       return;
     }
-    // fetch("/signup", {
-    //   method: "post",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     name: regName,
-    //     password: regPassword,
-    //     email: regEmail,
-    //     pic: url,
-    //   }),
-    // })
     axios
       .post(
         "/signup",
@@ -100,6 +88,14 @@ export default function SignIn() {
     }
   }, [url]);
 
+  // function onSignIn(googleUser) {
+  //   var profile = googleUser.getBasicProfile();
+  //   console.log("ID: " + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  //   console.log("Name: " + profile.getName());
+  //   console.log("Image URL: " + profile.getImageUrl());
+  //   console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.
+  // }
+
   return (
     <>
       <section>
@@ -107,7 +103,7 @@ export default function SignIn() {
           <div className="user signinBx">
             <div className="imgBx">
               <img
-                src="https://images.unsplash.com/photo-1576859958081-27de5c70262a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80"
+                src="https://storage.kun.uz/source/5/7IqEFhF8TYH9dE7aSfbJixHvlbzN5LgY.png"
                 alt="sign"
               />
             </div>
@@ -166,6 +162,7 @@ export default function SignIn() {
                 >
                   Sign In
                 </button>
+                {/* <div className="g-signin2" data-onsuccess="onSignIn"></div> */}
                 <p className="signup">
                   You already have accaunt?{/* eslint-disable-next-line */}
                   <a href="#" onClick={() => setClicked(!clicked)}>
@@ -177,7 +174,7 @@ export default function SignIn() {
             <div className="imgBx">
               <img
                 alt="sign"
-                src="https://images.unsplash.com/photo-1526925539332-aa3b66e35444?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8YmxhY2slMjBjb2Rpbmd8ZW58MHwxfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                src="https://static.zarnews.uz/crop/5/9/720__80_59687f917a0d46685a52ec8fe7c04138.jpg?img=self&v=1626171787"
               />
             </div>
           </div>

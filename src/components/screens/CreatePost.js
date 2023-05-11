@@ -12,18 +12,6 @@ export default function CreatePost() {
 
   useEffect(() => {
     if (url) {
-      // fetch("/createpost", {
-      //   method: "post",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //     Authorization: "Sammi " + localStorage.getItem("jwt"),
-      //   },
-      //   body: JSON.stringify({
-      //     title: title,
-      //     body: body,
-      //     pic: url,
-      //   }),
-      // })
       axios
         .post(
           "/createpost",

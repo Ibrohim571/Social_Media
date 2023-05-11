@@ -28,17 +28,6 @@ export default function Login(props) {
       });
       return;
     }
-
-    // fetch("/signin", {
-    //   method: "post",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     password: logPassword,
-    //     email: logEmail,
-    //   }),
-    // })
     let data = {
       password: logPassword,
       email: logEmail,

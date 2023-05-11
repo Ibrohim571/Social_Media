@@ -12,34 +12,18 @@ export default function SubscrUserPost() {
   const [showComments, setShowComments] = useState(false);
 
   useEffect(() => {
-    // fetch("/getsubspost", {
-    //   headers: {
-    //     Authorization: "Sammi " + localStorage.getItem("jwt"),
-    //   },
-    // })
     axios
       .get("/getsubspost", {
         headers: {
           Authorization: "Sammi " + localStorage.getItem("jwt"),
         },
       })
-      // .then((res) => res.json())
       .then((result) => {
         setData(result.data.posts);
       });
   }, []);
 
   const likePost = (id) => {
-    // fetch("/like", {
-    //   method: "put",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Authorization: "Sammi " + localStorage.getItem("jwt"),
-    //   },
-    //   body: JSON.stringify({
-    //     postId: id,
-    //   }),
-    // })
     axios
       .put(
         "/like",
@@ -51,7 +35,6 @@ export default function SubscrUserPost() {
           },
         }
       )
-      // .then((res) => res.json())
       .then((result) => {
         const newData = data.map((item) => {
           if (item._id === result.data._id) {
@@ -66,16 +49,6 @@ export default function SubscrUserPost() {
   };
 
   const unlikePost = (id) => {
-    // fetch("/unlike", {
-    //   method: "put",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Authorization: "Sammi " + localStorage.getItem("jwt"),
-    //   },
-    //   body: JSON.stringify({
-    //     postId: id,
-    //   }),
-    // })
     axios
       .put(
         "/unlike",
@@ -87,7 +60,6 @@ export default function SubscrUserPost() {
           },
         }
       )
-      // .then((res) => res.json())
       .then((result) => {
         const newData = data.map((item) => {
           if (item._id === result.data._id) {
@@ -102,17 +74,6 @@ export default function SubscrUserPost() {
   };
 
   const commentPost = (text, postId) => {
-    // fetch("/comments", {
-    //   method: "put",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Authorization: "Sammi " + localStorage.getItem("jwt"),
-    //   },
-    //   body: JSON.stringify({
-    //     postId,
-    //     text,
-    //   }),
-    // })
     axios
       .put(
         "/comments",
@@ -127,7 +88,6 @@ export default function SubscrUserPost() {
           },
         }
       )
-      // .then((res) => res.json())
       .then((result) => {
         const newData = data.map((item) => {
           if (item._id === result.data._id) {
@@ -142,19 +102,12 @@ export default function SubscrUserPost() {
   };
 
   const deletePost = (postId) => {
-    // fetch(`/deletepost/${postId}`, {
-    //   method: "delete",
-    //   headers: {
-    //     Authorization: "Sammi " + localStorage.getItem("jwt"),
-    //   },
-    // })
     axios
       .delete(`/deletepost/${postId}`, {
         headers: {
           Authorization: "Sammi " + localStorage.getItem("jwt"),
         },
       })
-      // .then((res) => res.json())
       .then((result) => {
         const newData = data.filter((s) => s._id !== result.data);
         setData(newData);

@@ -7,11 +7,6 @@ export default function HomeSideBar() {
   const [profile, setProfile] = useState([]);
   const { state, dispatch } = useContext(UserContext);
   useEffect(() => {
-    // fetch("/allusers", {
-    //   headers: {
-    //     Authorization: "Sammi " + localStorage.getItem("jwt"),
-    //   },
-    // })
     axios
       .get("/allusers", {
         headers: {

@@ -3,17 +3,6 @@ import axios from "axios";
 
 export default function SignUp() {
   const postData = () => {
-    // fetch("/signup", {
-    //   method: "post",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     name: "",
-    //     email: "",
-    //     password: "",
-    //   }),
-    // })
     axios
       .post(
         "/signup",

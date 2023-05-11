@@ -13,34 +13,18 @@ export default function UserProfile() {
   );
 
   useEffect(() => {
-    // fetch(`/user/${userId}`, {
-    //   headers: {
-    //     Authorization: "Sammi " + localStorage.getItem("jwt"),
-    //   },
-    // })
     axios
       .get(`/user/${userId}`, {
         headers: {
           Authorization: "Sammi " + localStorage.getItem("jwt"),
         },
       })
-      // .then((res) => res.json())
       .then((result) => {
         setProfile(result.data);
       });
   });
 
   const followUser = () => {
-    // fetch("/follow", {
-    //   method: "put",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Authorization: "Sammi " + localStorage.getItem("jwt"),
-    //   },
-    //   body: JSON.stringify({
-    //     followId: userId,
-    //   }),
-    // })
     axios
       .put(
         "/follow",
@@ -52,7 +36,6 @@ export default function UserProfile() {
           },
         }
       )
-      // .then((res) => res.json())
       .then(({ data }) => {
         dispatch({
           type: "UPDATE",
@@ -73,16 +56,6 @@ export default function UserProfile() {
   };
 
   const unfollowUser = () => {
-    // fetch("/unfollow", {
-    //   method: "put",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Authorization: "Sammi " + localStorage.getItem("jwt"),
-    //   },
-    //   body: JSON.stringify({
-    //     unfollowId: userId,
-    //   }),
-    // })
     axios
       .put(
         "/unfollow",
@@ -96,7 +69,6 @@ export default function UserProfile() {
           },
         }
       )
-      // .then((res) => res.json())
       .then(({ data }) => {
         dispatch({
           type: "UPDATE",
