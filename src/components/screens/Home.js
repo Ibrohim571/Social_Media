@@ -256,7 +256,13 @@ export default function Home() {
           <h4 style={{ color: "#000", fontFamily: "'Grand Hotel', cursive" }}>
             All Users
           </h4>
-          <HomeSideBar />
+          {state.email === "ia@gmail.com" ? (
+            <HomeSideBar />
+          ) : (
+            <h4>
+              Ayni damda sizga foydalanuvchilar ro'yhatini ko'rsata olmaymiz
+            </h4>
+          )}
         </div>
       </div>
     </div>
