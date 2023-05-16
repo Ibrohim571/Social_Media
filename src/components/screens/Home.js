@@ -256,7 +256,7 @@ export default function Home() {
           <h4 style={{ color: "#000", fontFamily: "'Grand Hotel', cursive" }}>
             All Users
           </h4>
-          {state.email === "ia@gmail.com" ? (
+          {state?.email === "ia@gmail.com" ? (
             <HomeSideBar />
           ) : (
             <h4>
