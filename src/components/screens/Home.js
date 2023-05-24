@@ -215,7 +215,7 @@ export default function Home() {
                     ) : (
                       <div>
                         <p style={{ opacity: 0.6 }}>
-                          Comments: {item.comments.length}
+                          Izohlar: {item.comments.length}
                         </p>
                         {item.comments
                           .map((s) => (
@@ -244,7 +244,7 @@ export default function Home() {
                         e.target[0].value = "";
                       }}
                     >
-                      <input type="text" placeholder="Add A Comment" />
+                      <input type="text" placeholder="Izoh qoldiring" />
                     </form>
                   </div>
                 </div>
@@ -254,15 +254,9 @@ export default function Home() {
         </div>
         <div className="right__side">
           <h4 style={{ color: "#000", fontFamily: "'Grand Hotel', cursive" }}>
-            All Users
+            Foydalanuvchilar
           </h4>
-          {state?.email === "ia@gmail.com" ? (
-            <HomeSideBar />
-          ) : (
-            <h4>
-              Ayni damda sizga foydalanuvchilar ro'yhatini ko'rsata olmaymiz
-            </h4>
-          )}
+          <HomeSideBar />
         </div>
       </div>
     </div>

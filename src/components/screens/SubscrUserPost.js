@@ -124,7 +124,7 @@ export default function SubscrUserPost() {
               .map((item) => {
                 return (
                   <div>
-                    <h4>Your Following Users Posts</h4>
+                    <h4>Sizning obunachilaringiz postlari</h4>
                     <div className="card" key={item._id}>
                       <Link
                         to={
@@ -200,7 +200,7 @@ export default function SubscrUserPost() {
                           ))
                         ) : (
                           <p style={{ opacity: 0.6 }}>
-                            Comments: {item.comments.length}
+                            Izohlar: {item.comments.length}
                           </p>
                         )}
                         <form
@@ -210,7 +210,7 @@ export default function SubscrUserPost() {
                             e.target[0].value = "";
                           }}
                         >
-                          <input type="text" placeholder="Add A Comment" />
+                          <input type="text" placeholder="Izoh qo'shish" />
                         </form>
                       </div>
                     </div>
@@ -219,12 +219,12 @@ export default function SubscrUserPost() {
               })
               .reverse()
           ) : (
-            <Not value="You not following yet" />
+            <Not value="Obunachilar yoki habarlar yo'q" />
           )}
         </div>
         <div className="right__side">
           <h4 style={{ color: "#000", fontFamily: "'Grand Hotel', cursive" }}>
-            All Users
+            Foydalanuvchilar
           </h4>
           <HomeSideBar />
         </div>

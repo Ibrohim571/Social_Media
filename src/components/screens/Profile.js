@@ -99,7 +99,7 @@ export default function Profile() {
 
   return (
     <div className="profile">
-      <div className="profileMain">
+      <div className="profileMain" style={{ paddingTop: "1rem" }}>
         <div>
           <div className="containers">
             <img
@@ -128,16 +128,16 @@ export default function Profile() {
             </button>
           </div>
           <div className="infoProfile">
-            <p>{profile.length} posts</p>
-            <p>{state ? state.followers.length : "0"} followers</p>
-            <p>{state ? state.following.length : "0"} following</p>
+            <p>{profile.length} habarlar</p>
+            <p>{state ? state.followers.length : "0"} obunachi</p>
+            <p>{state ? state.following.length : "0"} obuna</p>
           </div>
           <Link to="/myfollowerpost">
             <button
               style={{ marginTop: 10 }}
               className="btn #0d47a1 blue darken-4"
             >
-              Show My Following Users Posts
+              Obunalarni ochish
             </button>
           </Link>
         </div>
@@ -163,7 +163,7 @@ export default function Profile() {
         <div className="modalS" onClick={() => setIsOpenModal(false)}>
           <div className="modalS__content" onClick={(e) => e.stopPropagation()}>
             <div className="modalHeader">
-              <h4>Add Your Accaunt Photo</h4>
+              <h4>Profilga rasm joylash</h4>
               <i
                 style={{ cursor: "pointer", color: "#0d47a1" }}
                 onClick={() => setIsOpenModal(false)}
@@ -197,7 +197,7 @@ export default function Profile() {
                 className="btn #0d47a1 blue darken-4"
                 onClick={() => setIsOpenModal(false)}
               >
-                Save Image
+                Rasmni saqlash
               </button>
             </div>
           </div>
@@ -208,7 +208,7 @@ export default function Profile() {
         <div className="modalS" onClick={() => setIsEdit(false)}>
           <div className="modalS__content" onClick={(e) => e.stopPropagation()}>
             <div className="modalHeader">
-              <h4>Change Accaunt Profile</h4>
+              <h4>Profil malumotlarni o'zgartirish</h4>
             </div>
             <div className="modalConten">
               <div className="file-field input-field">
@@ -225,7 +225,7 @@ export default function Profile() {
                   <input
                     className="file-path validate"
                     type="text"
-                    placeholder="You Photo"
+                    placeholder="Rasmingiz"
                   />
                 </div>
               </div>
@@ -242,7 +242,7 @@ export default function Profile() {
                   type="text"
                   className="validate"
                 />
-                <label for="icon_prefix">First Name</label>
+                <label for="icon_prefix">Ismingiz</label>
               </div>
             </div>
             <div className="modalFooter">
@@ -250,7 +250,7 @@ export default function Profile() {
                 className="btn #0d47a1 blue darken-4"
                 onClick={() => editProfile()}
               >
-                Save Image
+                O'zgarishlarni saqlash
               </button>
             </div>
           </div>

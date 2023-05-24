@@ -95,7 +95,7 @@ export default function UserProfile() {
     <>
       {profile ? (
         <div className="profile">
-          <div className="profileMain">
+          <div className="profileMain" style={{ paddingTop: "1rem" }}>
             <div>
               <img
                 className="profileImg"
@@ -106,9 +106,9 @@ export default function UserProfile() {
             <div>
               <h4>{profile.user.name}</h4>
               <div className="infoProfile">
-                <p>{profile.posts.length} posts</p>
-                <p>{profile.user.followers.length} followers</p>
-                <p>{profile.user.following.length} following</p>
+                <p>{profile.posts.length} habarlar</p>
+                <p>{profile.user.followers.length} Obunachi</p>
+                <p>{profile.user.following.length} Obuna</p>
               </div>
               <div>
                 {showFollow ? (
@@ -117,7 +117,7 @@ export default function UserProfile() {
                     className="btn #0d47a1 blue darken-4"
                     onClick={() => followUser()}
                   >
-                    Follow
+                    Obuna
                   </button>
                 ) : (
                   <button
@@ -125,7 +125,7 @@ export default function UserProfile() {
                     className="btn #0d47a1 blue darken-4"
                     onClick={() => unfollowUser()}
                   >
-                    Un Follow
+                    Obunadan chiqish
                   </button>
                 )}
               </div>

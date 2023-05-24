@@ -25,7 +25,7 @@ export default function SignUp() {
   return (
     <div className="mycard">
       <div className="card card__auth ">
-        <h2>SammiGram</h2>
+        <h2>Milliygramm</h2>
         <div class="input-field col s6">
           <i class="material-icons prefix">verified_user</i>
           <input id="icon_prefix" type="text" class="validate" />
@@ -49,7 +49,7 @@ export default function SignUp() {
         </button>
 
         <p>
-          <Link to="/signin">Already have an accaunt?</Link>
+          <Link to="/signin">Avval ro'yhatdan o'tganmisiz?</Link>
         </p>
       </div>
     </div>

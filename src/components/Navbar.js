@@ -115,7 +115,7 @@ export default function Navbar() {
                 onChange={(e) => searchUser(e.target.value)}
                 className="validate"
               />
-              <label htmlFor="icon_prefix">Search...</label>
+              <label htmlFor="icon_prefix">Kerakli emailni kiriting</label>
             </div>
             <div>
               <ul className="collection">
@@ -141,7 +141,7 @@ export default function Navbar() {
                   ))
                 ) : (
                   <p style={{ fontWeight: "bold", fontStyle: "cursive" }}>
-                    Lookong for...
+                    Qidirilmoqda
                   </p>
                 )}
               </ul>
@@ -153,7 +153,7 @@ export default function Navbar() {
               style={{ color: "#fff" }}
               onClick={() => setSearch("")}
             >
-              Close
+              Yopish
             </button>
           </div>
         </div>

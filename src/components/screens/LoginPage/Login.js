@@ -23,7 +23,7 @@ export default function Login(props) {
       )
     ) {
       M.toast({
-        html: "Email Wrong",
+        html: "Email Hato",
         classes: "#ff1744 red accent-3",
       });
       return;
@@ -47,7 +47,7 @@ export default function Login(props) {
           localStorage.setItem("user", JSON.stringify(data.user));
           dispatch({ type: "USER", payload: data.user });
           M.toast({
-            html: "Successfully logged in",
+            html: "Muvafiqiyatli kirdingiz",
             classes: "#2e7d32 green darken-3",
           });
           history.push("/");
@@ -56,7 +56,7 @@ export default function Login(props) {
   };
   return (
     <div className="form">
-      <h2>Log In</h2>
+      <h2>Kirish</h2>
       <input
         type="email"
         placeholder="Email manzilingiz"
@@ -70,12 +70,12 @@ export default function Login(props) {
         onChange={(e) => setLogPassword(e.target.value)}
       />
       <button className="btn #0d47a1 blue darken-4" onClick={() => LogData()}>
-        Log In
+        Kirish
       </button>
       <p className="signup">
-        Do not have an accaunt?{/* eslint-disable-next-line */}
+        Avval ro'yhatdan o'tmaganmisiz?{/* eslint-disable-next-line */}
         <a href="#" onClick={() => setClicked(!clicked)}>
-          Sign In
+          Ro'yhatdan o'tish
         </a>
       </p>
     </div>

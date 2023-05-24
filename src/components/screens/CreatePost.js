@@ -66,9 +66,9 @@ export default function CreatePost() {
         <div className="card-image">
           <img
             alt="imgPost"
-            src="https://images.unsplash.com/photo-1554314591-dbb9acb3e336?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDJ8fGFkZCUyMHBob3RvfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+            src="https://xs.uz/upload/post/2020/03/04/91dd0684e951c67ec70161d83e9125df0304.jpg"
           />
-          <span className="card-title">Your Posts</span>
+          <span className="card-title">Habar qo'shish</span>
         </div>
         <div className="card-content">
           <div className="input-field col s6">
@@ -79,7 +79,7 @@ export default function CreatePost() {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
-            <label htmlFor="icon_prefix">Title</label>
+            <label htmlFor="icon_prefix">Asosiy mavzu</label>
           </div>
           <div className="input-field col s6">
             <i className="material-icons prefix">content_paste</i>
@@ -89,7 +89,7 @@ export default function CreatePost() {
               value={body}
               onChange={(e) => setBody(e.target.value)}
             />
-            <label htmlFor="icon_prefix">Body</label>
+            <label htmlFor="icon_prefix">Matni</label>
           </div>
           <div className="file-field input-field">
             <div className="btn #0d47a1 blue darken-4">
@@ -105,7 +105,7 @@ export default function CreatePost() {
               <input
                 className="file-path validate"
                 type="text"
-                placeholder="Your Photo"
+                placeholder="Rasm joylash"
               />
             </div>
           </div>
@@ -113,7 +113,7 @@ export default function CreatePost() {
             className="btn #0d47a1 blue darken-4"
             onClick={() => postDetails()}
           >
-            Add Posts
+            Yangi habar qo'shish
           </button>
         </div>
       </div>

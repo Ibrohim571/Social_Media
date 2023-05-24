@@ -121,14 +121,14 @@ export default function SignIn() {
           <div className="user signupBx">
             <div className="formBx">
               <div className="form">
-                <h2 style={{ margin: 0 }}>Sign In</h2>
-                <div class="containers">
+                <h2 style={{ margin: 0 }}>Ro'yhatdan o'tish</h2>
+                <div className="containers">
                   <img
                     src="https://res.cloudinary.com/dtabxocmw/image/upload/v1635099407/78-785827_user-profile-avatar-login-account-male-user-icon_kmmxgw.jpg"
                     alt="Avatar"
-                    class="images"
+                    className="images"
                   />
-                  <div class="middles">
+                  <div className="middles">
                     <button
                       onClick={() => setIsOpenModal(true)}
                       className="btn #0d47a1 blue darken-4"
@@ -160,13 +160,13 @@ export default function SignIn() {
                   className="btn #0d47a1 blue darken-4"
                   onClick={() => postData()}
                 >
-                  Sign In
+                  Ro'yhatdan o'tish
                 </button>
                 {/* <div className="g-signin2" data-onsuccess="onSignIn"></div> */}
                 <p className="signup">
-                  You already have accaunt?{/* eslint-disable-next-line */}
+                  Avval ro'yhatdan o'tganmisiz?{/* eslint-disable-next-line */}
                   <a href="#" onClick={() => setClicked(!clicked)}>
-                    Log In
+                    Kirish
                   </a>
                 </p>
               </div>
@@ -186,7 +186,7 @@ export default function SignIn() {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="modalHeader">
-                <h4>Add Your Accaunt Photo</h4>
+                <h4>Profilingizga rasm qo'yish</h4>
                 <i
                   style={{ cursor: "pointer", color: "#0d47a1" }}
                   onClick={() => setIsOpenModal(false)}
@@ -196,8 +196,8 @@ export default function SignIn() {
                 </i>
               </div>
               <div className="modalConten">
-                <div class="file-field input-field">
-                  <div class="btn #0d47a1 blue darken-4">
+                <div className="file-field input-field">
+                  <div className="btn #0d47a1 blue darken-4">
                     <span>
                       <i className="material-icons">add_a_photo</i>
                     </span>
@@ -206,11 +206,11 @@ export default function SignIn() {
                       onChange={(e) => setImage(e.target.files[0])}
                     />
                   </div>
-                  <div class="file-path-wrapper">
+                  <div className="file-path-wrapper">
                     <input
-                      class="file-path validate"
+                      className="file-path validate"
                       type="text"
-                      placeholder="You Photo"
+                      placeholder="Rasmingiz"
                     />
                   </div>
                 </div>
@@ -220,7 +220,7 @@ export default function SignIn() {
                   className="btn #0d47a1 blue darken-4"
                   onClick={() => setIsOpenModal(false)}
                 >
-                  Save Image
+                  Rasmni saqlash
                 </button>
               </div>
             </div>
